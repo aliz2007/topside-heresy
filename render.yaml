@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: topside-heresy
+    runtime: static
+    buildCommand: sh assemble.sh
+    staticPublishPath: dist
