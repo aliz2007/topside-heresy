@@ -4,7 +4,7 @@ Veigar and Aurelion Sol top lane codex for patch 26.15 (Season 16). 54 sourced m
 
 Made by Nine and DiabloV2.
 
-The site itself is one self-contained HTML file: no backend, no tracking, works offline, all champion/item/rune icons inlined. This repo stores that file as base64 chunks under `chunks/` (GitHub web flows handle small files best); `assemble.sh` rebuilds the real file into `dist/index.html`.
+The site itself is one self-contained HTML file: no backend, no tracking, works offline, all champion/item/rune icons inlined. `assemble.sh` downloads the gzipped site bundle from temporary storage and verifies it with pinned sha256 checksums before unpacking it to `dist/index.html`; if the bytes do not match the checksums the build fails, so a corrupted deploy is impossible.
 
 ## Run locally
 
@@ -20,6 +20,10 @@ sh assemble.sh
 3. Build Command: `sh assemble.sh`
 4. Publish Directory: `dist`
 5. Create Static Site. Every push to `main` redeploys automatically.
+
+## Rebuilds after 2026-08-08
+
+The bundle download link is temporary and expires on 2026-08-08. The first deploy and any redeploy until then work as-is. After that date a fresh copy of the bundle must be uploaded and the URL in `assemble.sh` updated; the pinned sha256 values stay the same.
 
 ## Content sources
 
